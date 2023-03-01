@@ -84,7 +84,15 @@ const formObj = {
 }
 //! Fetch toys and provide second argument
 //! with the object to post
-renderToys(formObj)
+fetch("http://localhost:3000/toys", {
+  method: "POST",
+  headers:{
+      "Content-Type": "application/json"
+    },
+  body: JSON.stringify(formObj)
+    })
+.then(response => response.json())
+.then(data => renderToys(data))
 e.target.reset()
 
 //? use this data we are posting
